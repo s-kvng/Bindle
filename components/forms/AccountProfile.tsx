@@ -13,7 +13,7 @@ interface Props {
 }
 
 
-const AccountProfile = ({ user }: Props) =>  {
+const AccountProfile = ({ user , btnTitle }: Props) =>  {
     return (
         <section>
             Account Profile
