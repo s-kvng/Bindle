@@ -42,7 +42,7 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
             name: '',
             username: '',
             bio: ''
-        } // got to this point ... 1:15:00 on youtube video 
+        } // 1:15:00 on youtube video 
     })
 
     const handleImage =(e: ChangeEvent, fieldChange: (value: string )=> void)=>{
@@ -55,6 +55,7 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
         // ✅ This will be type-safe and validated.
         console.log(values)
       }
+
     return (
         <Form {...form}>
         <form 
@@ -65,7 +66,7 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
             name="profile_photo"
             render={({ field }) => (
               <FormItem className='flex items-center gap-4'>
-                <FormLabel className='account_form_image-label'>
+                <FormLabel className='account-form_image-label'>
                     {field.value ? (
                         <Image
                         src={field.value}
@@ -101,7 +102,7 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem className='flex items-center gap-3 w-full'>
+              <FormItem className='flex flex-col gap-3 w-full'>
                 <FormLabel 
                 className='text-base-semibold text-light-2'>
                     Name
@@ -120,7 +121,7 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem className='flex items-center gap-3 w-full'>
+              <FormItem className='flex flex-col gap-3 w-full'>
                 <FormLabel 
                 className='text-base-semibold text-light-2'>
                     Username
@@ -139,7 +140,7 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
             control={form.control}
             name="bio"
             render={({ field }) => (
-              <FormItem className='flex items-center gap-3 w-full'>
+              <FormItem className='flex flex-col gap-3 w-full'>
                 <FormLabel 
                 className='text-base-semibold text-light-2'>
                     Bio
@@ -161,5 +162,6 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
     )
 }
 
+//got to 1:31:00 on youtube video
 
 export default AccountProfile;
