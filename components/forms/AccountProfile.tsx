@@ -16,7 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { UserValidation } from '@/lib/validations/user'
 import * as z from 'zod'
 import Image from 'next/image'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { Textarea } from '../ui/textarea'
 
 
@@ -34,20 +34,20 @@ interface Props {
 
 
 const AccountProfile = ({ user , btnTitle }: Props) =>  {
-
+  const [files , setFiles] = useState<File[]>([])
     const form = useForm({
         resolver: zodResolver(UserValidation),
         defaultValues: {
-            profile_photo: "",
-            name: '',
-            username: '',
-            bio: ''
+            profile_photo: user?.image || "",
+            name: user?.name || '',
+            username: user?.username || '',
+            bio: user?.bio || ''
         } // 1:15:00 on youtube video 
     })
 
     const handleImage =(e: ChangeEvent, fieldChange: (value: string )=> void)=>{
         e.preventDefault();
-
+        const fileReader = new FileReader()
     }
 
     function onSubmit(values: z.infer<typeof UserValidation>) {
@@ -74,7 +74,7 @@ const AccountProfile = ({ user , btnTitle }: Props) =>  {
                         width={96}
                         height={96}
                         priority
-                        className="round-full object contain"
+                        className="rounded-full object-contain"
                         />
                     ): (
                         <Image

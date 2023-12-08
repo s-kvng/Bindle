@@ -4,16 +4,15 @@ import { currentUser } from "@clerk/nextjs";
 
 async function Page() {
     const user = await currentUser();
-    
     const userInfo = {};
 
     const userData = {
-        id: user.id,
+        id: user?.id,
     objectId: userInfo?._id,
-    username: userInfo ? userInfo?.username : user.username,
-    name: userInfo ? userInfo?.name : user.firstName ?? "",
-    bio: userInfo ? userInfo?.bio : "",
-    image: userInfo ? userInfo?.image : user.imageUrl,
+    username: userInfo?.username || user?.username,
+    name: userInfo?.name || user?.firstName || "",
+    bio: userInfo?.bio || "",
+    image: userInfo?.image || user?.imageUrl,
     }
     return(
         <main className="flex flex-col mx-auto max-w-3xl justify-start px-10 py-10">
